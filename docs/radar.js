@@ -368,22 +368,32 @@ function radar_visualization(config) {
     .attr("d", "M 0,0 10,0 5,8 z")
     .style("fill", "#333");
 
-  function showBubble(d) {
-    if (d.active || config.print_layout) {
-      var tooltip = d3.select("#bubble text")
-        .text(d.label);
-      var bbox = tooltip.node().getBBox();
-      d3.select("#bubble")
-        .attr("transform", translate(d.x - bbox.width / 2, d.y - 16))
-        .style("opacity", 0.8);
-      d3.select("#bubble rect")
-        .attr("x", -5)
-        .attr("y", -bbox.height)
-        .attr("width", bbox.width + 10)
-        .attr("height", bbox.height + 4);
-      d3.select("#bubble path")
-        .attr("transform", translate(bbox.width / 2 - 5, 3));
-    }
+    function showBubble(d) {
+      if (d.active || config.print_layout) {
+        var title = d3.select("#bubble text")
+          .text(d.label); // Displays the label of the technology
+        var desc = d3.select("#bubble").append("text") // Append description text element
+          .attr("y", "1.2em") // Position the description text below the title
+          .attr("text-anchor", "middle")
+          .style("font-size", "10px") // Smaller font size for the description
+          .text(d.description); // Set the text to the description of the data entry
+  
+        var bbox = title.node().getBBox();
+        var descBox = desc.node().getBBox();
+        var bubbleWidth = Math.max(bbox.width, descBox.width) + 10; // Ensure the bubble is wide enough for both texts
+        var bubbleHeight = bbox.height + descBox.height + 6; // Adjust height to accommodate both texts
+  
+        d3.select("#bubble")
+          .attr("transform", translate(d.x - bubbleWidth / 2, d.y - bubbleHeight - 10)) // Position the bubble above the blip
+          .style("opacity", 0.8);
+        d3.select("#bubble rect")
+          .attr("x", -5)
+          .attr("y", -bubbleHeight)
+          .attr("width", bubbleWidth)
+          .attr("height", bubbleHeight);
+        d3.select("#bubble path")
+          .attr("transform", translate(bubbleWidth / 2 - 5, bubbleHeight - 10));
+      }
   }
 
   function hideBubble(d) {
@@ -418,6 +428,9 @@ function radar_visualization(config) {
   blips.each(function(d) {
     var blip = d3.select(this);
 
+    // Define size based on impact; you can adjust the scaling factor.
+    var size = 5 + (d.impact || 0) * 2; // Adjust size increment as needed
+
     // blip link
     if (!config.print_layout && d.active && d.hasOwnProperty("link")) {
       blip = blip.append("a")
@@ -427,32 +440,33 @@ function radar_visualization(config) {
     // blip shape
     if (d.moved > 0) {
       blip.append("path")
-        .attr("d", "M -11,5 11,5 0,-13 z") // triangle pointing up
+        .attr("d", "M " + (-size * 0.8) + "," + (size * 0.5) + " " + (size * 0.8) + "," + (size * 0.5) + " 0," + (-size * 1.3) + " z") // triangle pointing up
         .style("fill", d.color);
     } else if (d.moved < 0) {
       blip.append("path")
-        .attr("d", "M -11,-5 11,-5 0,13 z") // triangle pointing down
+        .attr("d", "M " + (-size * 0.8) + "," + (-size * 0.5) + " " + (size * 0.8) + "," + (-size * 0.5) + " 0," + (size * 1.3) + " z") // triangle pointing down
         .style("fill", d.color);
     } else {
       blip.append("circle")
-        .attr("r", 9)
+        .attr("r", size)
         .attr("fill", d.color);
     }
 
+    // Add text size adjustment if needed
     // blip text
     if (d.active || config.print_layout) {
       var blip_text = config.print_layout ? d.id : d.label.match(/[a-z]/i);
       blip.append("text")
         .text(blip_text)
-        .attr("y", 3)
+        .attr("y", size * 0.3) // Adjust text position based on size
         .attr("text-anchor", "middle")
         .style("fill", "#fff")
         .style("font-family", "Inter")
-        .style("font-size", function(d) { return blip_text.length > 2 ? "8px" : "9px"; })
+        .style("font-size", function(d) { return blip_text.length > 2 ? (size * 0.6) + "px" : (size * 0.7) + "px"; }) // Adjust font size based on size
         .style("pointer-events", "none")
         .style("user-select", "none");
     }
-  });
+});
 
   // make sure that blips stay inside their segment
   function ticked() {
