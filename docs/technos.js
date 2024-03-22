@@ -1,9 +1,9 @@
 
 // Quadrants 
-// 0. Sensing & Intelligence
-// 1. Security & Identity
-// 2. Automation & Safety
-// 3. Connectivity & Integration
+// 0. Autonomy
+// 1. Security
+// 2. Connectivity
+// 3. Accelerators
 
 // Rings
 // 0. Adopt 
@@ -12,41 +12,47 @@
 // 3. Hold 
 
 var radarData = [
-    {'label': 'Connectivity - Amazon Sidewalk', 'quadrant': 0, 'ring': 2, 'moved': 0.0, 'active': false, 'impact': 1, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Connectivity - LTE-M / NB-IoT', 'quadrant': 0, 'ring': 0, 'moved': 0.0, 'active': true, 'impact': 2, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Matter Standard', 'quadrant': 0, 'ring': 1, 'moved': 0.0, 'active': true, 'impact': 2, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'CAN Bus', 'quadrant': 0, 'ring': 0, 'moved': 0.0, 'active': true, 'impact': 0, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Single Pair Ethernet', 'quadrant': 0, 'ring': 1, 'moved': 0.0, 'active': true, 'impact': 1, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Wiegand', 'quadrant': 0, 'ring': 3, 'moved': 0.0, 'active': true, 'impact': 0, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'OSDP', 'quadrant': 0, 'ring': 0, 'moved': 0.0, 'active': true, 'impact': 2, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Ethernet / IP (for Readers)', 'quadrant': 0, 'ring': 1, 'moved': 0.0, 'active': false, 'impact': 1, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Ultra-low power RF wake methods', 'quadrant': 0, 'ring': 2, 'moved': 0.0, 'active': false, 'impact': 3, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'NFC Mobile Credentials', 'quadrant': 1, 'ring': 0, 'moved': 0.0, 'active': true, 'impact': 4, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'NFC as device interface', 'quadrant': 1, 'ring': 2, 'moved': 0.0, 'active': false, 'impact': 1, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'UWB Credentials / Communication', 'quadrant': 1, 'ring': 1, 'moved': 0.0, 'active': true, 'impact': 4, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Aliro Standard', 'quadrant': 1, 'ring': 3, 'moved': 0.0, 'active': true, 'impact': 3, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'PKOC - Public Key Open Credential Standard', 'quadrant': 1, 'ring': 2, 'moved': 0.0, 'active': true, 'impact': 2, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Leaf Credential Standard', 'quadrant': 1, 'ring': 2, 'moved': 0.0, 'active': false, 'impact': 1, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Discrete embedded secure elements', 'quadrant': 1, 'ring': 0, 'moved': 0.0, 'active': true, 'impact': 1, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'LEGIC Platform', 'quadrant': 1, 'ring': 0, 'moved': 0.0, 'active': true, 'impact': 1, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Mobile Wallets', 'quadrant': 1, 'ring': 0, 'moved': 0.0, 'active': true, 'impact': 3, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'BLE Mobile Credentials', 'quadrant': 1, 'ring': 3, 'moved': 0.0, 'active': true, 'impact': 1, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Edge AI / ML Platforms', 'quadrant': 2, 'ring': 1, 'moved': 0.0, 'active': true, 'impact': 3, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'TinyML', 'quadrant': 2, 'ring': 2, 'moved': 0.0, 'active': true, 'impact': 3, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'ML co-processors / accelerators', 'quadrant': 2, 'ring': 2, 'moved': 0.0, 'active': false, 'impact': 2, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Edge computer AI / ML accelerators', 'quadrant': 2, 'ring': 1, 'moved': 0.0, 'active': false, 'impact': 2, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'ARM Ethos', 'quadrant': 2, 'ring': 2, 'moved': 0.0, 'active': false, 'impact': 2, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Neuromorphic Vision', 'quadrant': 2, 'ring': 2, 'moved': 0.0, 'active': false, 'impact': 2, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Audio Sensing', 'quadrant': 2, 'ring': 1, 'moved': 0.0, 'active': true, 'impact': 3, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'LiDAR', 'quadrant': 2, 'ring': 1, 'moved': 0.0, 'active': true, 'impact': 2, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'RADAR', 'quadrant': 2, 'ring': 0, 'moved': 0.0, 'active': true, 'impact': 2, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Passive IR', 'quadrant': 2, 'ring': 3, 'moved': 0.0, 'active': true, 'impact': 0, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Ultrasonic', 'quadrant': 2, 'ring': 1, 'moved': 0.0, 'active': true, 'impact': 1, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Test Lab Data Factory', 'quadrant': 2, 'ring': 2, 'moved': 0.0, 'active': false, 'impact': 3, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Synthentic Data Tools', 'quadrant': 2, 'ring': 2, 'moved': 0.0, 'active': false, 'impact': 3, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'LLM training platforms', 'quadrant': 2, 'ring': 2, 'moved': 0.0, 'active': false, 'impact': 3, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Advanced Camera Lenses', 'quadrant': 2, 'ring': 2, 'moved': 0.0, 'active': false, 'impact': 1, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Computer Vision', 'quadrant': 2, 'ring': 1, 'moved': 0.0, 'active': true, 'impact': 4, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Safety RTOS', 'quadrant': 3, 'ring': 2, 'moved': 0.0, 'active': false, 'impact': 1, 'description': 'This is an example description for Example Technology.'},
-    {'label': 'Motion Control Platforms', 'quadrant': 3, 'ring': 2, 'moved': 0.0, 'active': false, 'impact': 2, 'description': 'This is an example description for Example Technology.'},
+    {'label': 'Embedded ML Accelerator Chips / Co-Processors', 'quadrant': 2, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'Additional hardware that sits next to a host MCU - Brainchip, Syntiant, Synsense, and others. Some are specific to various sensing modalities while some are more general.'},
+    {'label': 'Ethernet for Access Control Readers', 'quadrant': 0, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 1, 'description': 'More advanced and capable alternative to OSDP that may warrant investigation for new reader platforms and integrations especially with combination reader+controller units.'},
+    {'label': 'Synthetic Data Generation Tools', 'quadrant': 2, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 4, 'description': 'For AI and ML training. Platforms such as NVIDIA Omniverse can generate high quality machine vision data to bootstrap models for production.'},
+    {'label': 'AI Co-Pilot Tools', 'quadrant': 3, 'ring': 1, 'moved': 0.0, 'active': 'true', 'impact': 4, 'description': 'Such as Github co-pilot or ChatGPT'},
+    {'label': 'OSDP', 'quadrant': 0, 'ring': 0, 'moved': 0.0, 'active': 'true', 'impact': 3, 'description': 'Open Supervised Device Protocol. RS485 based communication standard for access control devices. Allows for a level of security and bi-directional communication between panels and readers.'},
+    {'label': 'Edge AI / ML Platforms', 'quadrant': 2, 'ring': 1, 'moved': 0.0, 'active': 'true', 'impact': 3, 'description': 'Machine learning platforms targeted at edge applications and microcontrollers. Makes it simpler and easier to start machine learning projects, collect data, train and test models, and deploy to various hardware. Useful tools to democratize this powerful technology for general developers. Everything from very constrained smart sensors to Edge computer applications for vision.'},
+    {'label': 'BLE based mobile credentials', 'quadrant': 1, 'ring': 0, 'moved': 0.0, 'active': 'true', 'impact': 3, 'description': 'Mobile credentials based on BLE and rely on a dedicated mobile app. Usually LEGIC based.'},
+    {'label': 'Printed PCBs', 'quadrant': 3, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'New technologies for PCB fabrication'},
+    {'label': 'CSA Matter', 'quadrant': 0, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 3, 'description': 'Matter is an open standard for smart home technology, launched by Amazon, Apple, Google, Comcast and the Zigbee Alliance (now Connectivity Standards Alliance, or CSA).'},
+    {'label': 'Ultra-Wide Band (UWB) for credentials', 'quadrant': 1, 'ring': 1, 'moved': 0.0, 'active': 'true', 'impact': 4, 'description': 'Augmenting mobile credentials with addition UWB capability such as secure ranging and angle of arrival.'},
+    {'label': 'PKOC', 'quadrant': 1, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'Public Key Open Credential standard. Device generated credential standard for interoperability'},
+    {'label': 'CSA Aliro', 'quadrant': 1, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 3, 'description': 'Public key based credential standard from CSA'},
+    {'label': 'PK-PACS', 'quadrant': 1, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'Public Key based credential standard'},
+    {'label': 'Advanced Camera Lenses', 'quadrant': 2, 'ring': 3, 'moved': 0.0, 'active': 'true', 'impact': 1, 'description': 'https://www.immervision.com/'},
+    {'label': 'Computer Vision', 'quadrant': 2, 'ring': 1, 'moved': 0.0, 'active': 'true', 'impact': 5, 'description': 'This item is likely to expand into many different technologies and trials as we progress but for now this is placeholder.'},
+    {'label': 'Safety RTOS', 'quadrant': 2, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'TUV certified RTOS to accelerate development and safety certifications for products that require it.'},
+    {'label': 'Leaf Credential Standard', 'quadrant': 1, 'ring': 3, 'moved': 0.0, 'active': 'true', 'impact': 1, 'description': 'Symmetric key based standard lead by Wavelynx'},
+    {'label': 'ARM Ethos', 'quadrant': 2, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 3, 'description': 'ARM architecture with ML acceleration built into the MCU. Some manufacturers are starting to release these chips with the ML IP included. This could be a great solution with a reliable base of silicon vendors behind it as more devices are released.'},
+    {'label': 'LiDAR', 'quadrant': 2, 'ring': 1, 'moved': 0.0, 'active': 'true', 'impact': 3, 'description': 'Method for determining ranges by targeting an object or a surface with a laser and measuring the time for the reflected light to return to the receiver. Somewhat cost prohibitive currently but coming down in cost and increasingly available.'},
+    {'label': 'RADAR', 'quadrant': 2, 'ring': 0, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'Embedded and cost effective radar technologies are broadly available from multiple vendors and are suitable for use in many of our applications.'},
+    {'label': 'Neuromorphic or Event Vision', 'quadrant': 2, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 3, 'description': 'Neuromorphic vision sensors are bio-inspired cameras that capture the vitality of a scene, mitigating data redundancy and latency. Event-based, these sensors bring Autonomy closer to reality and find utility in high-speed, vision-based applications in areas.\xa0'},
+    {'label': 'Audio Sensing', 'quadrant': 2, 'ring': 1, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'Using standard, low cost microphones such as MEMS microphones from TDK and others in combination with ML processing to classify various audio events. Useful for alarming, voice commands, annoloy detection, fault detection, etc.'},
+    {'label': 'Energy Harvesting - Motion', 'quadrant': 3, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'Energy capture from physical/motion input into a device. We have produced such devices in the past and still currently from legacy Kaba. Electronic locks and safe locks for example. These can be modernized and optimized. We believe there is still a space for this to existing in products, especially ones tied to critical / remote infrastructure.'},
+    {'label': 'Ultrasonic', 'quadrant': 2, 'ring': 0, 'moved': 0.0, 'active': 'true', 'impact': 1, 'description': 'Ultrasonics sensors have been around for a long time but specifically interesting developments in very small and very low power/cost ultrasonic sensors are interesting. Especially when paired with ML. Chirp from TDK is an example of this.'},
+    {'label': 'Energy Harvesting - Ambient RF', 'quadrant': 3, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'Ambient RF harvesting has been talked about for a long time but as of yet it has been cost prohibitive and inconsistent.'},
+    {'label': 'Energy Harvesting - NFC', 'quadrant': 3, 'ring': 1, 'moved': 0.0, 'active': 'true', 'impact': 3, 'description': 'NFC energy harvesting is a new and interesting area. It is already proven possibly to harvest meaningful power from NFC in order to power dynamic tags and other devices. Developments in the NFC standard and increasing power delivery and optimizations from companies like NuCurrent are only pushing this further and making it more usable and less niche.'},
+    {'label': 'Amazon Sidewalk', 'quadrant': 0, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'Amazon has recently opened up their Sidewalk network to 3rd parties and modules are becoming available. This technology, if coverage is sufficient, offers a much lower cost alternative to cellular networks both in terms of hardware cost and network operation costs.'},
+    {'label': 'Wireless power transfer', 'quadrant': 3, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'The intentional transmission of power from a base station to end nodes to enable battery free products.'},
+    {'label': 'Energy Harvesting - Solar', 'quadrant': 3, 'ring': 1, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'Capture energy from indoor or outdoor solar to enable battery free or longer battery life products.'},
+    {'label': 'NB-IoT', 'quadrant': 0, 'ring': 0, 'moved': 0.0, 'active': 'true', 'impact': 3, 'description': 'Low bandwidth cellular technology for low power devices'},
+    {'label': 'LTE-M', 'quadrant': 0, 'ring': 0, 'moved': 0.0, 'active': 'true', 'impact': 3, 'description': 'Low power LTE cellular connection for devices'},
+    {'label': 'Apple Wallet', 'quadrant': 1, 'ring': 0, 'moved': 0.0, 'active': 'true', 'impact': 4, 'description': 'Apple’s NFC wallet for access control credentials'},
+    {'label': 'Google Wallet', 'quadrant': 1, 'ring': 0, 'moved': 0.0, 'active': 'true', 'impact': 4, 'description': 'Google’s NFC wallet for access credentials'},
+    {'label': 'LEGIC Platform', 'quadrant': 1, 'ring': 0, 'moved': 0.0, 'active': 'true', 'impact': 4, 'description': 'Internal technology that could see increased adoption or changes in use. Secure embedded chipsets, credentials, and cloud services.'},
+    {'label': 'Embedded secure elements / security co-processors', 'quadrant': 1, 'ring': 1, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'Chips that provide accelerated crypto execution, secure code execution, or secure key storage.'},
+    {'label': 'CANOpen', 'quadrant': 0, 'ring': 0, 'moved': 0.0, 'active': 'true', 'impact': 1, 'description': 'An old technology but a really good and useful one. It is used on a lot of AAS product. A standarization of our CAN protocols and standardization of its use in products would be a benefit. For example, Alavardo uses a combination of serial communications like RS232, RS485, USB, I/O, etc. and it would be much cleaner to just use CAN for intra-device communication. Reduced cabling, easier to expand, more reliable.'},
+    {'label': 'Single Pair Ethernet (SPE)', 'quadrant': 0, 'ring': 1, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'A potential replacement for CAN where higher data rates are required. This could be a part of a long term phase out of CAN as SPE picks up popularity. Can also transmit power and data on just 2 wires.'},
+    {'label': 'Wiegand', 'quadrant': 0, 'ring': 3, 'moved': 0.0, 'active': 'true', 'impact': 1, 'description': 'Old interface still widely used to communicate in a single diretion from an access control reader to an access panel. A seperate line for 1’s and 0’s. Uni-directional and no encryption.'},
+    {'label': 'dormakaba Test Labs as data factories', 'quadrant': 3, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 3, 'description': 'I think we are potentially wasting a gold mine of data in our various test labs around the globe by not instrumenting product better to collect and store data in a structured way. This data can be used to improve product and develop proprietary algorithms to improve field performance and detection of issues. This is one of those things that if done right and consistently would build an ever increasing advantage over time that would be hard for competitors, especially new entrants, to replicate.'},
+    {'label': '3D-MID Injection Molded Structural Electronics', 'quadrant': 3, 'ring': 2, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'Process for having electronic circuits and components on structural injection molded parts to save cost, reduce part count, and miniaturize product.'},
+    {'label': 'Motion Control Platforms', 'quadrant': 2, 'ring': 1, 'moved': 0.0, 'active': 'true', 'impact': 2, 'description': 'Motor control platforms for ease of use and fine control of stepper, servo, and brusheless motors'},
+    {'label': '125kHz Proximity', 'quadrant': 1, 'ring': 3, 'moved': 0.0, 'active': 'true', 'impact': 1, 'description': 'Legacy credential technology that should only be used as a primary option for legacy systems.'},
+    {'label': 'Mifare Classic', 'quadrant': 1, 'ring': 3, 'moved': 0.0, 'active': 'true', 'impact': 1, 'description': 'Compromised smart card technology'},
 ];

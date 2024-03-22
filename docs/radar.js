@@ -353,54 +353,67 @@ function radar_visualization(config) {
     .attr("id", "bubble")
     .attr("x", 0)
     .attr("y", 0)
-    .style("opacity", 0)
+    .style("opacity", 0.5)
     .style("pointer-events", "none")
     .style("user-select", "none");
   bubble.append("rect")
     .attr("rx", 4)
     .attr("ry", 4)
-    .style("fill", "#333");
+    .style("stroke", "#333");
   bubble.append("text")
     .style("font-family", "sans-serif")
-    .style("font-size", "12px")
+    .style("font-size", "16px")
     .style("fill", "#fff");
   bubble.append("path")
     .attr("d", "M 0,0 10,0 5,8 z")
-    .style("fill", "#333");
+    .style("stroke", "#333");
 
     function showBubble(d) {
       if (d.active || config.print_layout) {
-        var title = d3.select("#bubble text")
-          .text(d.label); // Displays the label of the technology
-        var desc = d3.select("#bubble").append("text") // Append description text element
-          .attr("y", "1.2em") // Position the description text below the title
-          .attr("text-anchor", "middle")
-          .style("font-size", "10px") // Smaller font size for the description
-          .text(d.description); // Set the text to the description of the data entry
-  
+        // Clear previous texts
+        var bubbleGroup = d3.select("#bubble");
+        bubbleGroup.selectAll("text").remove(); // Remove existing texts
+    
+        // Append title text element
+        var title = bubbleGroup.append("text")
+          .attr("y", -18) // Initial Y position of the title inside the bubble
+          .style("font-family", "sans-serif")
+          .style("font-size", "16px")
+          .style("text-anchor", "middle") // Center the text horizontally
+          .style("fill", "#fff")
+          .text(d.label);
+    
+        // Append description text element below the title
+        var desc = bubbleGroup.append("text")
+          .attr("y", 5) // Position the description below the title
+          .style("font-size", "12px")
+          .style("text-anchor", "middle") // Center the text horizontally
+          .style("fill", "#fff")
+          .text(d.description);
+    
+        // Compute the size of the bubble based on the text dimensions
         var bbox = title.node().getBBox();
         var descBox = desc.node().getBBox();
-        var bubbleWidth = Math.max(bbox.width, descBox.width) + 10; // Ensure the bubble is wide enough for both texts
-        var bubbleHeight = bbox.height + descBox.height + 6; // Adjust height to accommodate both texts
-  
-        d3.select("#bubble")
-          .attr("transform", translate(d.x - bubbleWidth / 2, d.y - bubbleHeight - 10)) // Position the bubble above the blip
-          .style("opacity", 0.8);
-        d3.select("#bubble rect")
-          .attr("x", -5)
-          .attr("y", -bubbleHeight)
+        var bubbleWidth = Math.max(bbox.width, descBox.width) + 20; // Adding some padding
+        var bubbleHeight = bbox.height + descBox.height + 16; // Adjust based on your text layout
+    
+        // Adjust the bounding box size
+        bubbleGroup.select("rect")
           .attr("width", bubbleWidth)
-          .attr("height", bubbleHeight);
-        d3.select("#bubble path")
-          .attr("transform", translate(bubbleWidth / 2 - 5, bubbleHeight - 10));
+          .attr("height", bubbleHeight)
+          .attr("x", -bubbleWidth / 2) // Center the box horizontally
+          .attr("y", -bubbleHeight + 12); // Adjust vertical position
+    
+        // Adjust bubble group position
+        bubbleGroup
+          .attr("transform", "translate(" + (d.x) + "," + (d.y - bubbleHeight / 2 - 10) + ")") // Center and position above the blip
+          .style("opacity", 1); // Make sure the bubble is visible
       }
-  }
+    }
 
-  function hideBubble(d) {
-    var bubble = d3.select("#bubble")
-      .attr("transform", translate(0,0))
-      .style("opacity", 0);
-  }
+    function hideBubble(d) {
+      d3.select("#bubble").style("opacity", 0);
+    }
 
   function highlightLegendItem(d, color) {
     var legendItem = document.getElementById("legendItem" + d.id);
