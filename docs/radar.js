@@ -370,44 +370,38 @@ function radar_visualization(config) {
 
     function showBubble(d) {
       if (d.active || config.print_layout) {
-        // Clear previous texts
         var bubbleGroup = d3.select("#bubble");
-        bubbleGroup.selectAll("text").remove(); // Remove existing texts
+        bubbleGroup.selectAll("text").remove();
     
-        // Append title text element
         var title = bubbleGroup.append("text")
-          .attr("y", -18) // Initial Y position of the title inside the bubble
+          .attr("y", -18)
           .style("font-family", "sans-serif")
           .style("font-size", "16px")
-          .style("text-anchor", "middle") // Center the text horizontally
+          .style("text-anchor", "middle")
           .style("fill", "#fff")
           .text(d.label);
     
-        // Append description text element below the title
         var desc = bubbleGroup.append("text")
-          .attr("y", 5) // Position the description below the title
+          .attr("y", 5)
           .style("font-size", "12px")
-          .style("text-anchor", "middle") // Center the text horizontally
+          .style("text-anchor", "middle")
           .style("fill", "#fff")
           .text(d.description);
     
-        // Compute the size of the bubble based on the text dimensions
         var bbox = title.node().getBBox();
         var descBox = desc.node().getBBox();
-        var bubbleWidth = Math.max(bbox.width, descBox.width) + 20; // Adding some padding
-        var bubbleHeight = bbox.height + descBox.height + 16; // Adjust based on your text layout
+        var bubbleWidth = Math.max(bbox.width, descBox.width) + 20;
+        var bubbleHeight = bbox.height + descBox.height + 16;
     
-        // Adjust the bounding box size
         bubbleGroup.select("rect")
           .attr("width", bubbleWidth)
           .attr("height", bubbleHeight)
-          .attr("x", -bubbleWidth / 2) // Center the box horizontally
-          .attr("y", -bubbleHeight + 12); // Adjust vertical position
+          .attr("x", -bubbleWidth / 2)
+          .attr("y", -bubbleHeight + 12);
     
-        // Adjust bubble group position
         bubbleGroup
-          .attr("transform", "translate(" + (d.x) + "," + (d.y - bubbleHeight / 2 - 10) + ")") // Center and position above the blip
-          .style("opacity", 1); // Make sure the bubble is visible
+          .attr("transform", "translate(" + (d.x) + "," + (d.y - bubbleHeight / 2 - 10) + ")")
+          .style("opacity", 1);
       }
     }
 
@@ -431,6 +425,9 @@ function radar_visualization(config) {
   var blips = rink.selectAll(".blip")
     .data(config.entries)
     .enter()
+      .append("a") // Append an <a> element for each blip
+        .attr("xlink:href", function(d) { return d.url; }) // Set the href to the URL of the blip
+        .attr("target", "_blank") // Optional: Opens the link in a new tab/window
       .append("g")
         .attr("class", "blip")
         .attr("transform", function(d, i) { return legend_transform(d.quadrant, d.ring, i); })
@@ -442,7 +439,21 @@ function radar_visualization(config) {
     var blip = d3.select(this);
 
     // Define size based on impact; you can adjust the scaling factor.
-    var size = 5 + (d.impact || 0) * 2; // Adjust size increment as needed
+    var size = 10 + (d.impact || 0) * 3.0; // Adjust size increment as needed
+
+    // Determine fill and stroke styles based on 'active' status - MAY REMOVE NOT USED
+    var fill = d.active ? d.color : "none"; // No fill for inactive blips
+    var stroke = d.active ? "none" : d.color; // Use color for outline if inactive
+    var strokeWidth = d.active ? "0" : "2"; // Thicker outline for inactive blips
+    var fillOpacity = d.active ? "1" : "0.2"; // Mostly transparent fill for inactive
+    
+      // Blip shape common attributes - MAY REMOVE NOT USED
+    var shapeAttrs = {
+      fill: fill,
+      "fill-opacity": fillOpacity,
+      stroke: stroke,
+      "stroke-width": strokeWidth
+  };
 
     // blip link
     if (!config.print_layout && d.active && d.hasOwnProperty("link")) {

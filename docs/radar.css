@@ -17,3 +17,13 @@ td {
   vertical-align: top;
   padding-right: 60px;
 }
+text {
+  color: red;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.legend text, .blip text {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
